@@ -2,7 +2,7 @@
 
 bool Application::Initialize(HINSTANCE instance)
 {
-    if (!window.Create(instance, 1280, 720, L"Adv. Control Renderer"))
+    if (!window.Create(instance, 1280, 720, L"Adv. Engine - Vulkan"))
         return false;
 
     if (!renderer.Initialize(window.GetHandle(), 1280, 720))
@@ -17,7 +17,7 @@ int Application::Run()
     {
         advControl.BeginFrame();
 
-        // The CPU only describes work. Adv. Control owns the logical task list.
+        // CPU-side description. GPU execution is owned by the Vulkan backend.
         advControl.AddTask(Adv::TaskType::Clear);
         advControl.AddTask(Adv::TaskType::Geometry, 3);
 
